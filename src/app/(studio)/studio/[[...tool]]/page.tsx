@@ -1,10 +1,7 @@
-"use client";
-
-import { NextStudio } from 'next-sanity/studio';
-import config from '../../../../../sanity.config';
+import Studio from '@/components/Studio';
 
 export const runtime = 'edge';
 
 export default function StudioPage() {
-    return <NextStudio config={config} />;
+    return <Studio />;
 }
