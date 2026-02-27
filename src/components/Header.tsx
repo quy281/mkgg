@@ -95,10 +95,11 @@ export default function Header() {
                         <button
                             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                             className="lg:hidden w-12 h-12 flex flex-col items-center justify-center gap-1.5 transition-all text-[#c8a45c]"
+                            aria-label="Toggle Menu"
                         >
-                            <div className={`w-6 h-[2px] bg-current transition-all ${isMobileMenuOpen ? "rotate-45 translate-y-2" : ""}`} />
+                            <div className={`w-6 h-[2px] bg-current transition-all ${isMobileMenuOpen ? "rotate-45 translate-y-[8px]" : ""}`} />
                             <div className={`w-6 h-[2px] bg-current transition-all ${isMobileMenuOpen ? "opacity-0" : ""}`} />
-                            <div className={`w-6 h-[2px] bg-current transition-all ${isMobileMenuOpen ? "-rotate-45 -translate-y-2" : ""}`} />
+                            <div className={`w-6 h-[2px] bg-current transition-all ${isMobileMenuOpen ? "-rotate-45 -translate-y-[8px]" : ""}`} />
                         </button>
                     </div>
                 </div>
