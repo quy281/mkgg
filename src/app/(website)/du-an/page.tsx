@@ -1,5 +1,5 @@
 import ProjectList from "@/components/ProjectList";
-import { client } from "@/sanity/client";
+import { client, urlFor } from "@/sanity/client";
 import { getAllProjectsQuery } from "@/sanity/queries";
 
 export const metadata = {
@@ -11,13 +11,21 @@ export default async function DuAnPage() {
     // Fetch from Sanity
     const sanityProjects = await client.fetch(getAllProjectsQuery);
 
-    // Map Sanity data to our component format
+    // Helper to safely convert a Sanity image to URL string
+    const toImageUrl = (img: any): string => {
+        if (!img) return "";
+        if (typeof img === "string") return img;
+        try { return urlFor(img).url(); } catch { return ""; }
+    };
+
+    // Map Sanity data to our component format (all images as URL strings for serialization)
     const projects = sanityProjects.map((p: any) => ({
         id: p._id,
         title: p.title,
         slug: p.slug,
         category: p.category,
-        image: p.mainImage,
+        image: toImageUrl(p.mainImage),
+        gallery: (p.gallery || []).map((img: any) => toImageUrl(img)).filter(Boolean),
         location: p.location,
         area: p.area,
         year: p.year

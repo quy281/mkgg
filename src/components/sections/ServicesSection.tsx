@@ -46,9 +46,9 @@ export default function ServicesSection({ services }: ServicesSectionProps) {
     if (!services || services.length === 0) return null;
 
     return (
-        <section className="py-24 lg:py-32 bg-[#0e0e0e] relative overflow-hidden">
+        <section className="py-24 lg:py-32 bg-[#0a0a0a] relative overflow-hidden">
             {/* Decorative dark pattern */}
-            <div className="absolute inset-0 opacity-[0.02] pointer-events-none" style={{ backgroundImage: "url(/images/decorative/blueprint.png)", backgroundSize: "400px" }} />
+            <div className="absolute inset-0 opacity-[0.02] pointer-events-none" style={{ backgroundImage: "repeating-linear-gradient(0deg, transparent, transparent 49px, rgba(200,164,92,0.3) 50px), repeating-linear-gradient(90deg, transparent, transparent 49px, rgba(200,164,92,0.3) 50px)", backgroundSize: "50px 50px" }} />
 
             <div className="section-container relative z-10 flex flex-col md:flex-row items-end justify-between mb-16 gap-8">
                 <div>
@@ -106,7 +106,7 @@ export default function ServicesSection({ services }: ServicesSectionProps) {
                                             className="object-cover opacity-30 transition-transform duration-1000 group-hover:scale-110 group-hover:opacity-40"
                                             sizes="(max-width: 768px) 100vw, 33vw"
                                         />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-[#0e0e0e] via-[#0e0e0e]/80 to-transparent" />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/80 to-transparent" />
                                     </div>
 
                                     {/* Content */}

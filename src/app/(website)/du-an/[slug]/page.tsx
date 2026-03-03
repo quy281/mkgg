@@ -6,6 +6,7 @@ import type { Metadata } from "next";
 import { client, urlFor } from "@/sanity/client";
 import { getAllProjectsQuery, getProjectBySlugQuery } from "@/sanity/queries";
 import { PortableText } from '@portabletext/react';
+import ProjectGallerySlider from '@/components/ProjectGallerySlider';
 
 interface Props {
     params: Promise<{ slug: string }>;
@@ -32,6 +33,16 @@ export default async function ProjectDetailPage({ params }: Props) {
     const project = await client.fetch(getProjectBySlugQuery, { slug });
 
     if (!project) notFound();
+
+    // Helper to safely convert Sanity image to URL string
+    const toImageUrl = (img: any): string => {
+        if (!img) return "";
+        if (typeof img === "string") return img;
+        try { return urlFor(img).url(); } catch { return ""; }
+    };
+
+    // Convert gallery images to URL strings for client component serialization
+    const galleryUrls = (project.gallery || []).map((img: any) => toImageUrl(img)).filter(Boolean);
 
     // Bài viết dự án liên quan (Cùng Category)
     const allProjects = await client.fetch(getAllProjectsQuery);
@@ -115,88 +126,168 @@ export default async function ProjectDetailPage({ params }: Props) {
             </section>
 
             {/* ── Content ── */}
-            <section className="py-24 px-6 bg-[#0a0a0a]">
-                <div className="max-w-4xl mx-auto">
+            <section className="py-20 px-6 bg-[#0a0a0a]">
+                <div className="max-w-6xl mx-auto space-y-8">
 
-                    <div className="bg-[#141414] border border-white/5 p-8 md:p-16 mb-16 relative">
-                        {/* Decorative Corners */}
-                        <div className="absolute top-0 left-0 w-8 h-8 border-t border-l border-[#c8a45c]/30" />
-                        <div className="absolute top-0 right-0 w-8 h-8 border-t border-r border-[#c8a45c]/30" />
-                        <div className="absolute bottom-0 left-0 w-8 h-8 border-b border-l border-[#c8a45c]/30" />
-                        <div className="absolute bottom-0 right-0 w-8 h-8 border-b border-r border-[#c8a45c]/30" />
+                    {/* ────── BOX 1: Thông Tin Dự Án ────── */}
+                    <div className="grid lg:grid-cols-12 gap-8">
 
-                        <div className="flex items-center gap-3 mb-6">
-                            <span className="text-[#c8a45c] text-[12px] font-bold tracking-[0.2em] uppercase">TỔNG QUAN DỰ ÁN</span>
-                            <div className="w-12 h-px bg-[#c8a45c]/50" />
-                        </div>
+                        {/* Sidebar: Project Info Card */}
+                        <div className="lg:col-span-4">
+                            <div className="bg-[#111] border border-white/5 p-8 relative sticky top-24">
+                                {/* Decorative Corners */}
+                                <div className="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 border-[#c8a45c]/40" />
+                                <div className="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-[#c8a45c]/40" />
 
-                        <div className="prose prose-invert prose-p:text-white/70 prose-p:leading-relaxed prose-p:text-[16px] prose-headings:text-white prose-headings:font-serif prose-a:text-[#c8a45c] focus:outline-none max-w-none">
-                            {project.description ? (
-                                <PortableText value={project.description} />
-                            ) : (
-                                <div className="py-10 text-white/40 italic">
-                                    Chi tiết dự án đang được cập nhật.
+                                <div className="flex items-center gap-3 mb-8 pb-6 border-b border-white/5">
+                                    <div className="w-8 h-px bg-[#c8a45c]" />
+                                    <span className="text-[#c8a45c] text-[10px] font-bold tracking-[0.3em] uppercase">THÔNG TIN</span>
                                 </div>
-                            )}
-                        </div>
 
-                        {/* Gallery Section */}
-                        {project.gallery && project.gallery.length > 0 && (
-                            <div className="mt-16 sm:mt-24">
-                                <div className="flex items-center gap-3 mb-10">
-                                    <span className="text-[#c8a45c] text-[12px] font-bold tracking-[0.2em] uppercase">CHI TIẾT KIẾN TRÚC</span>
-                                    <div className="w-12 h-px bg-[#c8a45c]/50" />
-                                </div>
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
-                                    {project.gallery.map((img: any, idx: number) => (
-                                        <div
-                                            key={idx}
-                                            className={`relative overflow-hidden border border-white/5 group ${idx % 5 === 0 ? "md:col-span-2 aspect-[16/9]" : "aspect-[4/5] md:aspect-square"
-                                                }`}
-                                        >
-                                            <Image
-                                                src={urlFor(img).url()}
-                                                alt={`${project.title} - Ảnh ${idx + 1}`}
-                                                fill
-                                                className="object-cover transition-transform duration-[2s] group-hover:scale-110"
-                                                sizes="(max-width: 768px) 100vw, 50vw"
-                                            />
-                                            <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-700" />
-
-                                            {/* Decorative label */}
-                                            <div className="absolute bottom-4 left-4 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                                                <span className="text-[10px] font-bold text-white/80 tracking-widest uppercase bg-black/40 backdrop-blur-md px-3 py-1 border border-white/10">
-                                                    View {idx + 1}
-                                                </span>
-                                            </div>
+                                <div className="space-y-6">
+                                    {project.category && (
+                                        <div>
+                                            <p className="text-[10px] font-bold tracking-[0.2em] uppercase text-white/30 mb-2">LOẠI HÌNH</p>
+                                            <p className="text-white text-[15px] font-medium">{project.category}</p>
                                         </div>
-                                    ))}
+                                    )}
+                                    {project.location && (
+                                        <div>
+                                            <p className="text-[10px] font-bold tracking-[0.2em] uppercase text-white/30 mb-2">ĐỊA ĐIỂM</p>
+                                            <p className="text-white text-[15px] font-medium flex items-center gap-2">
+                                                <MapPin size={14} className="text-[#c8a45c]" />
+                                                {project.location}
+                                            </p>
+                                        </div>
+                                    )}
+                                    {project.area && (
+                                        <div>
+                                            <p className="text-[10px] font-bold tracking-[0.2em] uppercase text-white/30 mb-2">DIỆN TÍCH</p>
+                                            <p className="text-white text-[15px] font-medium flex items-center gap-2">
+                                                <Ruler size={14} className="text-[#c8a45c]" />
+                                                {project.area}
+                                            </p>
+                                        </div>
+                                    )}
+                                    {project.year && (
+                                        <div>
+                                            <p className="text-[10px] font-bold tracking-[0.2em] uppercase text-white/30 mb-2">NĂM HOÀN THÀNH</p>
+                                            <p className="text-white text-[15px] font-medium flex items-center gap-2">
+                                                <CalendarIcon size={14} className="text-[#c8a45c]" />
+                                                {project.year}
+                                            </p>
+                                        </div>
+                                    )}
+                                </div>
+
+                                {/* Contact Mini CTA */}
+                                <div className="mt-8 pt-6 border-t border-white/5">
+                                    <Link
+                                        href="/lien-he"
+                                        className="w-full inline-flex justify-center items-center gap-2 bg-[#c8a45c] text-black text-[10px] font-bold tracking-[0.2em] uppercase px-6 py-3.5 hover:bg-white transition-all duration-300"
+                                    >
+                                        TƯ VẤN MIỄN PHÍ
+                                    </Link>
                                 </div>
                             </div>
-                        )}
+                        </div>
 
-                        {/* Feature grid */}
-                        <div className="grid grid-cols-2 sm:grid-cols-3 gap-5 mt-16 pt-10 border-t border-white/10">
+                        {/* Main Content: Description */}
+                        <div className="lg:col-span-8">
+                            <div className="bg-[#111] border border-white/5 p-8 md:p-12 relative">
+                                {/* Decorative Corners */}
+                                <div className="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 border-[#c8a45c]/40" />
+                                <div className="absolute top-0 right-0 w-6 h-6 border-t-2 border-r-2 border-[#c8a45c]/40" />
+                                <div className="absolute bottom-0 left-0 w-6 h-6 border-b-2 border-l-2 border-[#c8a45c]/40" />
+                                <div className="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-[#c8a45c]/40" />
+
+                                <div className="flex items-center gap-3 mb-8 pb-6 border-b border-white/5">
+                                    <div className="w-2 h-2 bg-[#c8a45c]" />
+                                    <span className="text-[#c8a45c] text-[11px] font-bold tracking-[0.2em] uppercase">TỔNG QUAN DỰ ÁN</span>
+                                    <div className="flex-1 h-px bg-white/5" />
+                                </div>
+
+                                <div className="prose prose-invert prose-p:text-white/70 prose-p:leading-[1.8] prose-p:text-[15px] prose-headings:text-white prose-headings:font-serif prose-a:text-[#c8a45c] focus:outline-none max-w-none">
+                                    {project.description ? (
+                                        <PortableText value={project.description} />
+                                    ) : (
+                                        <div className="py-10 text-white/30 italic text-center">
+                                            Chi tiết dự án đang được cập nhật.
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* ────── BOX 2: Gallery ────── */}
+                    {galleryUrls.length > 0 && (
+                        <div className="bg-[#111] border border-white/5 p-8 md:p-12 relative">
+                            {/* Decorative Corners */}
+                            <div className="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 border-[#c8a45c]/40" />
+                            <div className="absolute top-0 right-0 w-6 h-6 border-t-2 border-r-2 border-[#c8a45c]/40" />
+                            <div className="absolute bottom-0 left-0 w-6 h-6 border-b-2 border-l-2 border-[#c8a45c]/40" />
+                            <div className="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-[#c8a45c]/40" />
+
+                            <div className="flex items-center gap-3 mb-8 pb-6 border-b border-white/5">
+                                <div className="w-2 h-2 bg-[#c8a45c]" />
+                                <span className="text-[#c8a45c] text-[11px] font-bold tracking-[0.2em] uppercase">CHI TIẾT KIẾN TRÚC</span>
+                                <div className="flex-1 h-px bg-white/5" />
+                                <span className="text-white/20 text-[11px] tracking-wider">{galleryUrls.length} ảnh</span>
+                            </div>
+
+                            <ProjectGallerySlider
+                                images={galleryUrls}
+                                projectTitle={project.title}
+                                mode="detail"
+                            />
+                        </div>
+                    )}
+
+                    {/* ────── BOX 3: Năng Lực & Cam Kết ────── */}
+                    <div className="bg-[#111] border border-white/5 p-8 md:p-12 relative">
+                        {/* Decorative Corners */}
+                        <div className="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 border-[#c8a45c]/40" />
+                        <div className="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-[#c8a45c]/40" />
+
+                        <div className="flex items-center gap-3 mb-8 pb-6 border-b border-white/5">
+                            <div className="w-2 h-2 bg-[#c8a45c]" />
+                            <span className="text-[#c8a45c] text-[11px] font-bold tracking-[0.2em] uppercase">NĂNG LỰC & CAM KẾT</span>
+                            <div className="flex-1 h-px bg-white/5" />
+                        </div>
+
+                        <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
                             {[
-                                "Khảo sát thực tế",
-                                "Thiết kế 3D trực quan",
-                                "Vật liệu cao cấp",
-                                "Thi công trọn gói",
-                                "Bảo hành dài hạn",
-                                "Đúng tiến độ",
+                                { label: "Khảo sát thực tế", icon: "📐" },
+                                { label: "Thiết kế 3D trực quan", icon: "🖥️" },
+                                { label: "Vật liệu cao cấp", icon: "✨" },
+                                { label: "Thi công trọn gói", icon: "🏗️" },
+                                { label: "Bảo hành dài hạn", icon: "🛡️" },
+                                { label: "Đúng tiến độ", icon: "⏱️" },
                             ].map((f) => (
-                                <div key={f} className="flex items-center gap-3 text-[14px] font-medium text-white/60">
-                                    <div className="w-4 h-4 rounded-full bg-[#c8a45c]/10 flex items-center justify-center flex-shrink-0 border border-[#c8a45c]/30">
-                                        <span className="w-1.5 h-1.5 rounded-full bg-[#c8a45c]" />
-                                    </div>
-                                    {f}
+                                <div key={f.label} className="flex items-center gap-3 p-4 bg-[#0a0a0a] border border-white/5 hover:border-[#c8a45c]/20 transition-all duration-300 group">
+                                    <span className="text-lg flex-shrink-0">{f.icon}</span>
+                                    <span className="text-[13px] font-medium text-white/60 group-hover:text-white/80 transition-colors">
+                                        {f.label}
+                                    </span>
                                 </div>
                             ))}
                         </div>
                     </div>
 
-                    {/* CTA */}
-                    <div className="relative p-12 lg:p-16 text-center border border-[#c8a45c]/20 bg-[#141414]">
+                    {/* ────── BOX 4: CTA ────── */}
+                    <div className="relative bg-[#111] border border-[#c8a45c]/20 p-12 lg:p-16 text-center overflow-hidden">
+                        {/* Background watermark */}
+                        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                            <span className="text-[200px] font-bold text-white/[0.015] leading-none" style={{ fontFamily: "'Playfair Display', serif" }}>MKG</span>
+                        </div>
+
+                        {/* Decorative border */}
+                        <div className="absolute top-0 left-0 w-10 h-10 border-t-2 border-l-2 border-[#c8a45c]/50" />
+                        <div className="absolute top-0 right-0 w-10 h-10 border-t-2 border-r-2 border-[#c8a45c]/50" />
+                        <div className="absolute bottom-0 left-0 w-10 h-10 border-b-2 border-l-2 border-[#c8a45c]/50" />
+                        <div className="absolute bottom-0 right-0 w-10 h-10 border-b-2 border-r-2 border-[#c8a45c]/50" />
+
                         <div className="relative z-10">
                             <div className="flex justify-center mb-6">
                                 <div className="w-16 h-1 bg-[#c8a45c]" />
@@ -207,18 +298,19 @@ export default async function ProjectDetailPage({ params }: Props) {
                             >
                                 BẠN MUỐN CÓ <span className="italic font-light text-[#c8a45c]">KHÔNG GIAN</span> TƯƠNG TỰ?
                             </h3>
-                            <p className="text-white/60 text-[15px] mb-10 max-w-xl mx-auto leading-relaxed">
+                            <p className="text-white/50 text-[14px] mb-10 max-w-xl mx-auto leading-relaxed">
                                 Để lại thông tin liên hệ, đội ngũ kỹ sư và kiến trúc sư của chúng tôi sẽ tư vấn và lên bản vẽ thiết kế phù hợp nhất với phong cách và ngân sách của bạn.
                             </p>
                             <Link
                                 href="/lien-he"
-                                className="inline-flex justify-center items-center gap-2 bg-[#c8a45c] text-black text-[12px] font-bold tracking-[0.2em] uppercase px-10 py-4 hover:bg-white transition-all duration-300"
+                                className="inline-flex justify-center items-center gap-2 bg-[#c8a45c] text-black text-[11px] font-bold tracking-[0.2em] uppercase px-10 py-4 hover:bg-white transition-all duration-300"
                             >
                                 <MapPin size={16} />
                                 NHẬN TƯ VẤN MIỄN PHÍ
                             </Link>
                         </div>
                     </div>
+
                 </div>
             </section>
 

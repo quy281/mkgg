@@ -49,7 +49,11 @@ export const getAllProjectsQuery = groq`
     title,
     "slug": slug.current,
     category,
-    mainImage
+    mainImage,
+    gallery,
+    location,
+    area,
+    year
   }
 `;
 

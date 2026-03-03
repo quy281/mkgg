@@ -11,6 +11,7 @@ import TestimonialsSection from "@/components/sections/TestimonialsSection";
 import ContactSection from "@/components/sections/ContactSection";
 import BlogSection from "@/components/sections/BlogSection";
 
+
 import { client } from "@/sanity/client";
 import {
   getSiteSettingsQuery,
@@ -149,6 +150,10 @@ export default async function HomePage() {
       <BlogSection
         posts={displayPosts}
       />
+
+      <RibbonSeparator />
+
+      <ContactSection />
     </>
   );
 }

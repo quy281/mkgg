@@ -32,7 +32,7 @@ export default function TestimonialsSection({ testimonials }: TestimonialsSectio
     if (!testimonials || testimonials.length === 0) return null;
 
     return (
-        <section className="py-24 lg:py-32 bg-[#141414] relative overflow-hidden">
+        <section className="py-24 lg:py-32 bg-[#111] relative overflow-hidden">
             {/* Background Quote Mark */}
             <div className="absolute top-20 left-10 text-white/5 z-0 pointer-events-none">
                 <Quote size={300} strokeWidth={0.5} />

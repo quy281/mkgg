@@ -21,7 +21,7 @@ export default function PortfolioSection({ projects }: PortfolioSectionProps) {
     if (!projects || projects.length === 0) return null;
 
     return (
-        <section className="bg-black">
+        <section className="py-16 lg:py-24 bg-[#0a0a0a]">
             {/* Grid Container */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 w-full">
                 {projects.slice(0, 4).map((project, index) => (

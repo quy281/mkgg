@@ -11,7 +11,7 @@ export default function ProcessSection() {
     ];
 
     return (
-        <section className="py-24 lg:py-32 bg-[#141414] relative">
+        <section className="py-24 lg:py-32 bg-[#111] relative">
             <div className="section-container">
                 <div className="grid lg:grid-cols-2 gap-16 items-center">
 

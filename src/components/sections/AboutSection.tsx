@@ -27,7 +27,7 @@ export default function AboutSection({ aboutText }: AboutSectionProps) {
     ];
 
     return (
-        <section className="py-24 lg:py-40 bg-[#0a0a0a] relative overflow-hidden">
+        <section className="py-24 lg:py-40 bg-[#111] relative overflow-hidden">
             {/* Large Watermark Number (Antra Style) */}
             <div
                 className="absolute -left-10 top-20 text-[300px] font-bold text-white/[0.02] leading-none pointer-events-none select-none"
@@ -44,7 +44,7 @@ export default function AboutSection({ aboutText }: AboutSectionProps) {
                         <div className="absolute top-0 left-0 w-[85%] h-[85%] z-10 p-2 bg-[#0a0a0a]">
                             <div className="relative w-full h-full overflow-hidden">
                                 <Image
-                                    src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200"
+                                    src="/images/about/about-interior.jpg"
                                     alt="MKG Workspace"
                                     fill
                                     className="object-cover transition-transform duration-1000 hover:scale-105"
@@ -55,7 +55,7 @@ export default function AboutSection({ aboutText }: AboutSectionProps) {
                         <div className="absolute bottom-0 right-0 w-[55%] h-[55%] z-20 p-2 bg-[#0a0a0a]">
                             <div className="relative w-full h-full overflow-hidden border border-[#c8a45c]/30 shadow-2xl">
                                 <Image
-                                    src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800"
+                                    src="/images/projects/project-sunrise-city.jpg"
                                     alt="MKG Project"
                                     fill
                                     className="object-cover transition-transform duration-1000 hover:scale-105"

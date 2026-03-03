@@ -14,7 +14,7 @@ export default function ExpertiseSection() {
     ];
 
     return (
-        <section className="py-24 lg:py-32 bg-[#0a0a0a] relative overflow-hidden">
+        <section className="py-24 lg:py-32 bg-[#111] relative overflow-hidden">
 
             {/* Background large text mark */}
             <div
@@ -61,7 +61,7 @@ export default function ExpertiseSection() {
                         {/* Signature Box */}
                         <div className="mt-12 inline-flex items-center gap-6 p-6 border border-[#c8a45c]/20 bg-[#141414] rounded-sm">
                             <div className="w-14 h-14 rounded-full overflow-hidden relative border border-[#c8a45c]/30">
-                                <Image src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&q=80&crop=faces" alt="CEO Min Khuê" fill className="object-cover" sizes="56px" />
+                                <Image src="/images/about/about-company.png" alt="CEO Minh Khuê" fill className="object-cover" sizes="56px" />
                             </div>
                             <div>
                                 <p className="text-[13px] text-white/40 italic mb-1">
@@ -77,7 +77,7 @@ export default function ExpertiseSection() {
                         {/* Primary Image */}
                         <div className="absolute top-0 right-0 w-[80%] h-[80%] z-10 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
                             <Image
-                                src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1200"
+                                src="/images/projects/project-nha-pho-long-an.jpg"
                                 alt="Thiết kế nội thất"
                                 fill
                                 className="object-cover"
@@ -88,7 +88,7 @@ export default function ExpertiseSection() {
                         {/* Secondary Image Overlapping */}
                         <div className="absolute bottom-0 left-0 w-[60%] h-[60%] z-20 shadow-[0_20px_50px_rgba(0,0,0,0.5)] border-[8px] border-[#0a0a0a]">
                             <Image
-                                src="https://images.unsplash.com/photo-1503387762-592dea58ef23?w=800"
+                                src="/images/projects/project-him-lam.jpg"
                                 alt="Thi công nội thất"
                                 fill
                                 className="object-cover"

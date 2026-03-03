@@ -15,7 +15,7 @@ export default function ContactSection() {
     };
 
     return (
-        <section className="py-24 lg:py-32 bg-[#0e0e0e] relative">
+        <section className="py-24 lg:py-32 bg-[#111] relative">
             <div className="section-container">
 
                 <div className="text-center mb-16">
@@ -108,8 +108,8 @@ export default function ContactSection() {
                         <div className="mb-12">
                             <h4 className="text-[11px] font-bold tracking-widest text-[#c8a45c] uppercase mb-4">LIÊN HỆ TRỰC TIẾP</h4>
                             <p className="text-[24px] lg:text-[32px] text-white leading-tight font-bold" style={{ fontFamily: "'Inter', sans-serif" }}>
-                                <a href="tel:0932084444" className="hover:text-[#c8a45c] transition-colors block">0932 084 444</a>
-                                <a href="tel:0934389181" className="hover:text-[#c8a45c] transition-colors block text-white/50">0934 389 181</a>
+                                <a href="tel:0817424242" className="hover:text-[#c8a45c] transition-colors block">0817 424242</a>
+                                <a href="tel:02873032879" className="hover:text-[#c8a45c] transition-colors block text-white/50">028 7303 2879</a>
                             </p>
                         </div>
 

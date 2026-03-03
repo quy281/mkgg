@@ -29,8 +29,8 @@ export const companyInfo = {
         addresses: [
             "Số 8 đường 79, Phường Tân Quy, Quận 7, TP.HCM",
         ],
-        hotline: "0932 084 444",
-        phones: ["0932 084 444", "0934 389 181"],
+        hotline: "0817 424242",
+        phones: ["0817 424242", "028 7303 2879"],
         email: "fadifurnitures@gmail.com",
         website: "https://mkg.vn"
     },
@@ -497,5 +497,6 @@ export const navigation = [
     { label: "Giới thiệu", href: "/gioi-thieu" },
     { label: "Dự án", href: "/du-an" },
     { label: "Tin tức", href: "/tin-tuc" },
+    { label: "Khuyến mãi", href: "/khuyen-mai" },
     { label: "Liên hệ", href: "/lien-he" },
 ];

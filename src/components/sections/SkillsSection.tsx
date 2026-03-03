@@ -37,7 +37,7 @@ export default function SkillsSection({ skills }: SkillsSectionProps) {
     if (!skills || skills.length === 0) return null;
 
     return (
-        <section ref={sectionRef} className="py-24 lg:py-32 bg-[#141414] relative overflow-hidden">
+        <section ref={sectionRef} className="py-24 lg:py-32 bg-[#111] relative overflow-hidden">
 
             <div className="section-container relative z-10">
                 <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
