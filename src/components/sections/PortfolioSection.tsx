@@ -17,6 +17,23 @@ interface PortfolioSectionProps {
     projects: Project[];
 }
 
+const slugToLocalImage: Record<string, string> = {
+    "du-an-nha-pho-long-an": "/images/projects/project-nha-pho-long-an.jpg",
+    "chung-cu-saigon-south-residences": "/images/projects/project-saigon-south.jpg",
+    "thiet-ke-noi-that-sunrise-city-view": "/images/projects/project-sunrise-city.jpg",
+    "can-ho-zenith-quan-1": "/images/projects/project-zenity-q1.jpg",
+    "can-ho-him-lam": "/images/projects/project-him-lam.jpg",
+    "nha-anh-thien-chi-hang": "/images/projects/project-lam-ha.jpg",
+};
+
+function getProjectImageUrl(project: Project): string {
+    if (project.mainImage) {
+        if (typeof project.mainImage === "string") return project.mainImage;
+        try { return urlFor(project.mainImage).url(); } catch { /* fall through */ }
+    }
+    return slugToLocalImage[project.slug] || "/images/projects/project-nha-pho-long-an.jpg";
+}
+
 export default function PortfolioSection({ projects }: PortfolioSectionProps) {
     if (!projects || projects.length === 0) return null;
 
@@ -35,7 +52,7 @@ export default function PortfolioSection({ projects }: PortfolioSectionProps) {
 
                         {/* Background Image */}
                         <Image
-                            src={project.mainImage ? (typeof project.mainImage === 'string' ? project.mainImage : urlFor(project.mainImage).url()) : "/images/placeholder.jpg"}
+                            src={getProjectImageUrl(project)}
                             alt={project.title}
                             fill
                             className="object-cover transition-transform duration-1000 group-hover:scale-110"
