@@ -4,8 +4,6 @@ import { Phone, ChevronLeft, ShieldCheck, Clock, Truck, Star, CheckCircle2, Arro
 import type { Metadata } from "next";
 import PricingCarousel from "@/components/PricingCarousel";
 
-export const runtime = "edge";
-
 /* ── SEO METADATA ── */
 export const metadata: Metadata = {
     title: "Sơn Nước Jotun Trọn Gói – Giảm 45% | MKG.VN",
