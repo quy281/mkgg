@@ -45,7 +45,7 @@ export default function AboutSection({ aboutText }: AboutSectionProps) {
                             <div className="relative w-full h-full overflow-hidden">
                                 <Image
                                     src="/images/about/about-interior.jpg"
-                                    alt="MKG Workspace"
+                                    alt="Xưởng sản xuất nội thất Minh Khuê Group"
                                     fill
                                     className="object-cover transition-transform duration-1000 hover:scale-105"
                                     sizes="(max-width: 768px) 100vw, 50vw"
@@ -56,7 +56,7 @@ export default function AboutSection({ aboutText }: AboutSectionProps) {
                             <div className="relative w-full h-full overflow-hidden border border-[#c8a45c]/30 shadow-2xl">
                                 <Image
                                     src="/images/projects/project-sunrise-city.jpg"
-                                    alt="MKG Project"
+                                    alt="Dự án nội thất tiêu biểu của MKG"
                                     fill
                                     className="object-cover transition-transform duration-1000 hover:scale-105"
                                     sizes="(max-width: 768px) 100vw, 50vw"

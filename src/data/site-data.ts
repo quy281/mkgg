@@ -47,10 +47,10 @@ export const companyInfo = {
         { name: "Sản xuất Đồ gỗ", percentage: 95 }
     ],
     stats: [
-        { label: "Năm Kinh Nghiệm", number: "10+" },
-        { label: "Dự Án Hoàn Thành", number: "500+" },
-        { label: "Khách Hàng Hài Lòng", number: "1500+" },
-        { label: "Giải Thưởng Thiết Kế", number: "25" }
+        { label: 'Năm kinh nghiệm', number: '15+' },
+        { label: 'Dự án hoàn thành', number: '200+' },
+        { label: 'm² nhà máy sản xuất', number: '5,000' },
+        { label: 'Nhân sự chuyên môn', number: '50+' },
     ]
 };
 

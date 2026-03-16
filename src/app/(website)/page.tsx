@@ -10,6 +10,7 @@ import StatsSection from "@/components/sections/StatsSection";
 import TestimonialsSection from "@/components/sections/TestimonialsSection";
 import ContactSection from "@/components/sections/ContactSection";
 import BlogSection from "@/components/sections/BlogSection";
+import FAQSection from "@/components/sections/FAQSection";
 
 
 import { client } from "@/sanity/client";
@@ -150,6 +151,10 @@ export default async function HomePage() {
       <BlogSection
         posts={displayPosts}
       />
+
+      <RibbonSeparator />
+
+      <FAQSection />
 
       <RibbonSeparator />
 

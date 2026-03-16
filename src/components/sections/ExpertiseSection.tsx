@@ -61,7 +61,7 @@ export default function ExpertiseSection() {
                         {/* Signature Box */}
                         <div className="mt-12 inline-flex items-center gap-6 p-6 border border-[#c8a45c]/20 bg-[#141414] rounded-sm">
                             <div className="w-14 h-14 rounded-full overflow-hidden relative border border-[#c8a45c]/30">
-                                <Image src="/images/about/about-company.png" alt="CEO Minh Khuê" fill className="object-cover" sizes="56px" />
+                                <Image src="/images/about/about-company.png" alt="Founder Minh Khuê Group - MKG Nội Thất Cao Cấp" fill className="object-cover" sizes="56px" />
                             </div>
                             <div>
                                 <p className="text-[13px] text-white/40 italic mb-1">

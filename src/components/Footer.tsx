@@ -153,9 +153,19 @@ export default function Footer() {
             {/* Bottom bar */}
             <div style={{ borderTop: "1px solid rgba(255,255,255,0.05)" }}>
                 <div className="section-container py-8">
-                    <p className="text-center text-[11px] text-white/20 tracking-[0.3em] uppercase font-bold">
-                        © MKG.VN | {companyInfo.fullName}
-                    </p>
+                    <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+                        <p className="text-center text-[11px] text-white/20 tracking-[0.3em] uppercase font-bold">
+                            © MKG.VN | {companyInfo.fullName}
+                        </p>
+                        <div className="flex items-center gap-6">
+                            <Link href="/chinh-sach-bao-mat" className="text-[11px] text-white/20 hover:text-[#c8a45c] tracking-wider uppercase transition-colors">
+                                Chính sách bảo mật
+                            </Link>
+                            <Link href="/dieu-khoan-su-dung" className="text-[11px] text-white/20 hover:text-[#c8a45c] tracking-wider uppercase transition-colors">
+                                Điều khoản sử dụng
+                            </Link>
+                        </div>
+                    </div>
                 </div>
             </div>
         </footer>

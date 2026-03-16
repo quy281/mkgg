@@ -3,8 +3,9 @@ import { client, urlFor } from "@/sanity/client";
 import { getAllProjectsQuery } from "@/sanity/queries";
 
 export const metadata = {
-    title: "Dự Án | Minh Khuê Group",
-    description: "Các dự án thiết kế và thi công nội thất tiêu biểu từ Minh Khuê Group",
+    title: "Dự Án Nội Thất Đã Hoàn Thành | MKG - Portfolio 200+ Công Trình",
+    description: "Khám phá 200+ dự án nội thất đã hoàn thành bởi MKG: biệt thự, căn hộ, văn phòng, showroom. Xem hình ảnh thực tế before/after và đánh giá khách hàng.",
+    alternates: { canonical: '/du-an' },
 };
 
 export default async function DuAnPage() {

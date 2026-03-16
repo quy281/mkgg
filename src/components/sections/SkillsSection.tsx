@@ -48,7 +48,7 @@ export default function SkillsSection({ skills }: SkillsSectionProps) {
                         <div className="relative w-full h-full rounded-tr-[100px] rounded-bl-[100px] overflow-hidden">
                             <Image
                                 src="/images/about/about-company.png"
-                                alt="MKG Design Process"
+                                alt="Quy trình thiết kế nội thất chuyên nghiệp tại MKG"
                                 fill
                                 className="object-cover"
                                 sizes="50vw"

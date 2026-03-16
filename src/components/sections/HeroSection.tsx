@@ -35,7 +35,7 @@ export default function HeroSection({ slides, slogan }: HeroSectionProps) {
                 >
                     <Image
                         src={typeof slide === 'string' ? slide : urlFor(slide).url()}
-                        alt="MKG Interior"
+                        alt={`Nội thất cao cấp thiết kế bởi MKG - Slide ${i + 1}`}
                         fill
                         className="object-cover transition-transform duration-[10000ms] ease-linear scale-110 active:scale-125"
                         style={{ transform: i === currentSlide ? 'scale(1.1)' : 'scale(1.2)' }}
@@ -96,10 +96,13 @@ export default function HeroSection({ slides, slogan }: HeroSectionProps) {
                                 className="text-5xl md:text-7xl lg:text-[100px] font-bold text-white uppercase leading-[0.95] mb-10"
                                 style={{ fontFamily: "'Playfair Display', serif", letterSpacing: "-0.03em" }}
                             >
-                                KIẾN TẠO <br />
-                                <span className="italic font-light text-[#c8a45c] lowercase" style={{ fontFamily: "'Playfair Display', serif" }}>Luxury</span> <br className="lg:hidden" />
-                                <span className="lg:ml-20">KHÔNG GIAN</span>
+                                Thiết Kế & Thi Công <br />
+                                <span className="italic font-light text-[#c8a45c] lowercase" style={{ fontFamily: "'Playfair Display', serif" }}>Nội Thất</span> <br className="lg:hidden" />
+                                <span className="lg:ml-20">Cao Cấp tại TP.HCM</span>
                             </h1>
+                            <p className="text-white/50 text-lg md:text-xl font-light mb-2" style={{ fontFamily: "'Playfair Display', serif" }}>
+                                Kiến tạo không gian sống đẳng cấp — MKG
+                            </p>
 
                             <div className="flex flex-col sm:flex-row items-center gap-8 mt-12">
                                 <Link

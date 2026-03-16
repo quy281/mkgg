@@ -3,8 +3,9 @@ import { client } from "@/sanity/client";
 import { getAllPostsQuery } from "@/sanity/queries";
 
 export const metadata = {
-    title: "Tin Tức | Minh Khuê Group",
-    description: "Cập nhật xu hướng thiết kế, mẫu nội thất mới nhất và tin tức từ Minh Khuê Group",
+    title: "Blog Nội Thất | Xu Hướng & Mẹo Thiết Kế 2026 - MKG",
+    description: "Cập nhật xu hướng thiết kế nội thất 2026, mẹo trang trí nhà, kinh nghiệm chọn vật liệu gỗ. Blog chia sẻ từ chuyên gia MKG tại TP.HCM.",
+    alternates: { canonical: '/tin-tuc' },
 };
 
 export default async function TinTucPage() {

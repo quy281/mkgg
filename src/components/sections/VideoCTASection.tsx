@@ -18,7 +18,7 @@ export default function VideoCTASection({ videoUrl }: VideoCTASectionProps) {
             <div className="absolute inset-0 z-0">
                 <Image
                     src="/images/projects/project-saigon-south.jpg"
-                    alt="MKG Factory Video"
+                    alt="Nhà máy sản xuất nội thất MKG tại TP.HCM"
                     fill
                     className={`object-cover transition-transform duration-[20s] ${isPlaying ? 'scale-110' : 'scale-100'}`}
                     sizes="100vw"

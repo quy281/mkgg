@@ -6,10 +6,10 @@ import { client, urlFor } from "@/sanity/client";
 import { getServicesQuery, getSiteSettingsQuery } from "@/sanity/queries";
 
 export async function generateMetadata(): Promise<Metadata> {
-    const settings = await client.fetch(getSiteSettingsQuery);
     return {
-        title: "Giới thiệu | MINH KHUÊ GROUP",
-        description: settings?.aboutText || companyInfo.aboutText,
+        title: "Giới Thiệu MKG | Công Ty Nội Thất Uy Tín Quận 7 TP.HCM",
+        description: "Minh Khuê Group (MKG) - Công ty thiết kế nội thất uy tín Quận 7, TP.HCM. Đội ngũ kiến trúc sư giàu kinh nghiệm, quy trình chuyên nghiệp từ tư vấn đến bàn giao.",
+        alternates: { canonical: '/gioi-thieu' },
     };
 }
 
