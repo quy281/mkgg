@@ -6,17 +6,6 @@ import { ArrowRight, Tag, Sparkles } from "lucide-react";
 
 const promotions = [
     {
-        id: "son-nuoc-jotun",
-        title: "SƠN NƯỚC JOTUN TRỌN GÓI",
-        subtitle: "Sơn lại căn hộ với sơn Jotun chính hãng",
-        discount: "45%",
-        priceFrom: "5.000.000",
-        image: "/images/projects/project-nha-pho-long-an.jpg",
-        tags: ["Sơn Jotun", "Trọn gói", "Bảo hành 3 năm"],
-        description: "Ưu đãi sơn nước Jotun trọn gói cho căn hộ 1-3 phòng ngủ. Bao gồm nhân công, vật liệu, che chắn và vệ sinh.",
-        validUntil: "31/03/2026",
-    },
-    {
         id: "thiet-ke-noi-that",
         title: "THIẾT KẾ NỘI THẤT 3D",
         subtitle: "Thiết kế chuyên nghiệp, render 3D chân thực",

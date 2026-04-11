@@ -48,7 +48,7 @@ body {
   width: 100%;
 }
 
-/* Texture Overlay for Premium Feel */
+/* Texture Overlay for Premium Feel — inline SVG (no external request) */
 body::before {
   content: "";
   position: fixed;
@@ -56,8 +56,8 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url("https://www.transparenttextures.com/patterns/dark-matter.png");
-  opacity: 0.15;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.04;
   pointer-events: none;
   z-index: 100;
 }
@@ -315,4 +315,54 @@ h4,
   opacity: 0.3;
   filter: blur(2px);
   z-index: 1;
+}
+
+/* ===== STICKY MOBILE CTA BAR ===== */
+.sticky-mobile-cta {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  display: flex;
+  height: 60px;
+  background: #0a0a0a;
+  border-top: 1px solid rgba(200, 164, 92, 0.25);
+  box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.6);
+}
+
+.sticky-mobile-cta a {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.sticky-mobile-cta .cta-call {
+  background: var(--primary);
+  color: #000;
+}
+
+.sticky-mobile-cta .cta-zalo {
+  background: #0068FF;
+  color: #fff;
+}
+
+.sticky-mobile-cta .cta-quote {
+  background: #1a1a1a;
+  color: var(--primary);
+  border-left: 1px solid rgba(200, 164, 92, 0.2);
+}
+
+@media (min-width: 1024px) {
+  .sticky-mobile-cta {
+    display: none;
+  }
 }
