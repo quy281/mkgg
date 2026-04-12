@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+export const runtime = 'edge';
 
 const SYSTEM_PROMPT = `Bạn là trợ lý tư vấn AI của MKG.VN và FADI — chuyên gia nội thất và sơn nước uy tín tại TP.HCM.
 

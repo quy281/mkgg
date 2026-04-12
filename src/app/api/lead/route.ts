@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+export const runtime = 'edge';
 
 // POST /api/lead
 // Nhận lead từ form → lưu + forward n8n webhook
