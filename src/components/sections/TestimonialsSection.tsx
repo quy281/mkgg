@@ -3,7 +3,6 @@
 import { useState } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
-import { urlFor } from "@/sanity/client";
 
 interface Testimonial {
     _id: string;
@@ -72,7 +71,7 @@ export default function TestimonialsSection({ testimonials }: TestimonialsSectio
                                         {/* Avatar */}
                                         <div className="relative w-32 h-32 md:w-48 md:h-48 flex-shrink-0 rounded-full overflow-hidden border-2 border-[#c8a45c]/20">
                                             <Image
-                                                src={item.avatar ? (typeof item.avatar === 'string' ? item.avatar : urlFor(item.avatar).url()) : "/images/about/about-company.png"}
+                                                src={item.avatar ? (typeof item.avatar === 'string' ? item.avatar : '/images/about/about-company.png') : '/images/about/about-company.png'}
                                                 alt={item.name}
                                                 fill
                                                 className="object-cover"

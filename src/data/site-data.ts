@@ -110,6 +110,11 @@ export type Project = {
     category: string;
     image: string;
     link: string;
+    gallery?: string[];
+    location?: string;
+    area?: string;
+    year?: string;
+    description?: string;
 };
 
 export const projects: Project[] = [

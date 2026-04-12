@@ -3,7 +3,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Calendar } from "lucide-react";
-import { urlFor } from "@/sanity/client";
 
 interface BlogPost {
     _id: string;
@@ -56,7 +55,7 @@ export default function BlogSection({ posts }: BlogSectionProps) {
                             <Link href={`/tin-tuc/${post.slug}`} className="block overflow-hidden relative mb-6 rounded-tr-3xl rounded-bl-3xl">
                                 <div className="aspect-[4/3] w-full relative">
                                     <Image
-                                        src={post.mainImage ? (typeof post.mainImage === 'string' ? post.mainImage : urlFor(post.mainImage).url()) : "/images/placeholder.jpg"}
+                                        src={post.mainImage ? (typeof post.mainImage === 'string' ? post.mainImage : '/images/placeholder.jpg') : '/images/placeholder.jpg'}
                                         alt={post.title}
                                         fill
                                         className="object-cover transition-transform duration-700 group-hover:scale-110"

@@ -3,7 +3,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { urlFor } from "@/sanity/client";
 
 interface Project {
     _id: string;
@@ -29,7 +28,6 @@ const slugToLocalImage: Record<string, string> = {
 function getProjectImageUrl(project: Project): string {
     if (project.mainImage) {
         if (typeof project.mainImage === "string") return project.mainImage;
-        try { return urlFor(project.mainImage).url(); } catch { /* fall through */ }
     }
     return slugToLocalImage[project.slug] || "/images/projects/project-nha-pho-long-an.jpg";
 }

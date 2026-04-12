@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { ArrowRight, Facebook, Youtube, Instagram } from "lucide-react";
-import { urlFor } from "@/sanity/client";
 
 interface HeroSectionProps {
     slides: any[];
@@ -34,7 +33,7 @@ export default function HeroSection({ slides, slogan }: HeroSectionProps) {
                     className={`hero-slide ${i === currentSlide ? "active" : ""}`}
                 >
                     <Image
-                        src={typeof slide === 'string' ? slide : urlFor(slide).url()}
+                        src={typeof slide === 'string' ? slide : ''}
                         alt={`Nội thất cao cấp thiết kế bởi MKG - Slide ${i + 1}`}
                         fill
                         className="object-cover transition-transform duration-[10000ms] ease-linear scale-110 active:scale-125"

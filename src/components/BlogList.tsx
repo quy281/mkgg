@@ -4,10 +4,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { ArrowRight, Calendar, Search } from "lucide-react";
-import { urlFor } from "@/sanity/client";
 
 interface Post {
-    id: string;
+    id: string | number;
     title: string;
     slug: string;
     category: string;
@@ -87,7 +86,7 @@ export default function BlogList({ posts }: { posts: Post[] }) {
                             <div className="relative aspect-[4/3] w-full overflow-hidden rounded-tr-3xl rounded-bl-3xl mb-6">
                                 {post.featuredImage ? (
                                     <Image
-                                        src={post.featuredImage._type === 'image' ? urlFor(post.featuredImage).url() : post.featuredImage}
+                                        src={typeof post.featuredImage === 'string' ? post.featuredImage : ''}
                                         alt={post.title}
                                         fill
                                         className="object-cover transition-transform duration-700 group-hover:scale-110"

@@ -1,6 +1,5 @@
 import BlogList from "@/components/BlogList";
-import { client } from "@/sanity/client";
-import { getAllPostsQuery } from "@/sanity/queries";
+import { blogPosts } from "@/data/site-data";
 
 export const metadata = {
     title: "Blog Nội Thất | Xu Hướng & Mẹo Thiết Kế 2026 - MKG",
@@ -8,19 +7,15 @@ export const metadata = {
     alternates: { canonical: '/tin-tuc' },
 };
 
-export default async function TinTucPage() {
-    // Fetch from Sanity
-    const sanityPosts = await client.fetch(getAllPostsQuery);
-
-    // Map to component format
-    const posts = sanityPosts.map((p: any) => ({
-        id: p._id,
+export default function TinTucPage() {
+    const posts = blogPosts.map(p => ({
+        id: p.id,
         title: p.title,
         slug: p.slug,
         category: p.category,
-        featuredImage: p.mainImage,
+        featuredImage: p.featuredImage,
         excerpt: p.excerpt,
-        date: p.publishedAt
+        date: p.date
     }));
 
     return (
@@ -29,7 +24,6 @@ export default async function TinTucPage() {
             <section className="relative h-[40vh] min-h-[400px] overflow-hidden bg-[#0a0a0a]">
                 <div className="absolute inset-0 bg-[url('/images/projects/project-hero-bg.jpg')] bg-cover bg-center opacity-30 mix-blend-overlay" />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent" />
-
                 <div className="relative z-10 h-full flex flex-col justify-center items-center text-center px-6">
                     <div className="flex items-center gap-3 mb-6">
                         <div className="w-8 h-px bg-[#c8a45c]" />
@@ -47,8 +41,6 @@ export default async function TinTucPage() {
                     </p>
                 </div>
             </section>
-
-            {/* Client Component hiển thị danh sách có tìm kiếm, bộ lọc */}
             <BlogList posts={posts} />
         </div>
     );

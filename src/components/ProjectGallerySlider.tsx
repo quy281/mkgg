@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { useState, useRef, useCallback, useEffect } from "react";
 import { ChevronLeft, ChevronRight, X, ZoomIn } from "lucide-react";
-import { urlFor } from "@/sanity/client";
 
 interface ProjectGallerySliderProps {
     images: any[];
@@ -14,7 +13,7 @@ interface ProjectGallerySliderProps {
 function getImageUrl(img: any): string {
     if (!img) return "";
     if (typeof img === "string") return img;
-    if (img._type === "image" || img.asset) return urlFor(img).url();
+    if (img._type === "image" || img.asset) return "";
     return "";
 }
 

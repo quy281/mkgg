@@ -4,7 +4,6 @@ import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronLeft, ChevronRight, PenTool, LayoutTemplate, Box, Settings } from "lucide-react";
-import { urlFor } from "@/sanity/client";
 
 interface Service {
     _id: string;
@@ -100,7 +99,7 @@ export default function ServicesSection({ services }: ServicesSectionProps) {
                                     {/* Background Image (faded) */}
                                     <div className="absolute inset-0 z-0">
                                         <Image
-                                            src={service.image ? (typeof service.image === 'string' ? service.image : urlFor(service.image).url()) : "/images/services/service-construction.jpg"}
+                                            src={service.image ? (typeof service.image === 'string' ? service.image : '/images/services/service-construction.jpg') : '/images/services/service-construction.jpg'}
                                             alt={service.title}
                                             fill
                                             className="object-cover opacity-30 transition-transform duration-1000 group-hover:scale-110 group-hover:opacity-40"
